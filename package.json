@@ -42,7 +42,10 @@
     "build:ts": {
       "command": "tsc --build --pretty",
       "clean": "if-file-deleted",
-      "files": ["src/**/*.ts", "tsconfig.json"],
+      "files": [
+        "src/**/*.ts",
+        "tsconfig.json"
+      ],
       "output": [
         "build/src/**",
         "build/tsconfig.tsbuildinfo"
@@ -50,18 +53,30 @@
     },
     "build:cem": {
       "command": "custom-elements-manifest analyze --outdir build --litelement --globs \"src/**/*.ts\"",
-      "files": ["src/**/*.ts"],
-      "output": ["build/custom-elements.json"]
+      "files": [
+        "src/**/*.ts"
+      ],
+      "output": [
+        "build/custom-elements.json"
+      ]
     },
     "lint": {
       "command": "gts lint",
-      "files": ["src/**/*.ts", ".eslintignore", ".eslintrc.json"],
-      "output": ["build/custom-elements.json"]
+      "files": [
+        "src/**/*.ts",
+        ".eslintignore",
+        ".eslintrc.json"
+      ],
+      "output": [
+        "build/custom-elements.json"
+      ]
     },
     "start": {
       "command": "web-dev-server",
       "service": true,
-      "files": ["web-dev-server.config.js"],
+      "files": [
+        "web-dev-server.config.js"
+      ],
       "dependencies": [
         {
           "script": "build:ts",
