@@ -15,13 +15,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "wireit",
     "clean": "gts clean",
-    "compile": "tsc",
+    "compile": "wireit",
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "posttest": "npm run lint",
     "start": "wireit",
-    "build:ts": "wireit"
+    "build:ts": "wireit",
+    "build:cem": "wireit"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.0",
@@ -47,10 +48,15 @@
         "build/tsconfig.tsbuildinfo"
       ]
     },
+    "build:cem": {
+      "command": "custom-elements-manifest analyze --outdir build --litelement --globs \"src/**/*.ts\"",
+      "files": ["src/**/*.ts"],
+      "output": ["build/custom-elements.json"]
+    },
     "lint": {
       "command": "gts lint",
       "files": ["src/**/*.ts", ".eslintignore", ".eslintrc.json"],
-      "output": []
+      "output": ["build/custom-elements.json"]
     },
     "start": {
       "command": "web-dev-server --node-resolve --watch",
@@ -60,6 +66,12 @@
           "script": "build:ts",
           "cascade": false
         }
+      ]
+    },
+    "compile": {
+      "dependencies": [
+        "build:ts",
+        "build:cem"
       ]
     }
   }
