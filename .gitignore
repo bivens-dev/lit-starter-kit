@@ -1,3 +1,5 @@
 node_modules/
 build/
 .wireit/
+src/**/*.css.ts
+src/**/*.css.js

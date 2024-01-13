@@ -11,6 +11,9 @@
   ],
   "license": "Apache-2.0",
   "keywords": [],
+  "engines":{
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "wireit",
@@ -22,7 +25,8 @@
     "posttest": "npm run lint",
     "start": "wireit",
     "build:ts": "wireit",
-    "build:cem": "wireit"
+    "build:cem": "wireit",
+    "build:css": "wireit"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.0",
@@ -31,6 +35,7 @@
     "eslint-plugin-lit": "^1.11.0",
     "eslint-plugin-wc": "^2.0.4",
     "gts": "^5.2.0",
+    "lightningcss": "^1.22.1",
     "typescript": "~5.3.0",
     "wireit": "^0.14.3"
   },
@@ -49,6 +54,9 @@
       "output": [
         "build/src/**",
         "build/tsconfig.tsbuildinfo"
+      ],
+      "dependencies": [
+        "build:css"
       ]
     },
     "build:cem": {
@@ -58,6 +66,18 @@
       ],
       "output": [
         "build/custom-elements.json"
+      ]
+    },
+    "build:css": {
+      "command": "node scripts/process-css.js",
+      "files": [
+        "scripts/process-css.js",
+        "src/**/*.css"
+      ],
+      "output": [
+        "build/src/**/*.css",
+        "src/**/*.css.ts",
+        "src/**/*.css.js"
       ]
     },
     "lint": {
