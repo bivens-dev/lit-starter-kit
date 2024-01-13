@@ -12,7 +12,8 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "importHelpers": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "incremental": true
   },
   "include": [
     "src/**/*.ts",
