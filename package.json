@@ -59,8 +59,9 @@
       "output": ["build/custom-elements.json"]
     },
     "start": {
-      "command": "web-dev-server --node-resolve --watch",
+      "command": "web-dev-server",
       "service": true,
+      "files": ["web-dev-server.config.js"],
       "dependencies": [
         {
           "script": "build:ts",
