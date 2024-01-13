@@ -7,7 +7,10 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-vscode-remote.remote-containers"
+				"ms-vscode-remote.remote-containers",
+				"Google.wireit",
+				"dbaeumer.vscode-eslint",
+				"runem.lit-plugin"
 			]
 		}
 	}
