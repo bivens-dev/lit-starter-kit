@@ -101,7 +101,9 @@ class StylesheetProcessor {
       return;
     }
 
-    const fileOutput = `import {css} from 'lit';
+    const fileOutput = `
+      // AUTO GENERATED FILE: DO NOT EDIT BY HAND
+      import {css} from 'lit';
         export const styles = css\`
         ${resultsObject.cssFile}\`;
       `;
