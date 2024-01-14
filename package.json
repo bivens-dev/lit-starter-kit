@@ -17,7 +17,7 @@
   "scripts": {
     "test": "wireit",
     "lint": "wireit",
-    "clean": "gts clean",
+    "clean": "node scripts/clean.js",
     "compile": "wireit",
     "fix": "gts fix",
     "prepare": "npm run compile",
