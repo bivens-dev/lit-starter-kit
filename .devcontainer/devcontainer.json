@@ -13,7 +13,7 @@
 				"runem.lit-plugin"
 			]
 		}
-	}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -22,7 +22,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "sudo npx playwright install-deps && npx playwright install"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
