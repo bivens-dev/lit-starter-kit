@@ -4,12 +4,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 
 export default {
+  input: 'www/*.html',
   plugins: [
-    // Entry point for application build; can specify a glob to build multiple
-    // HTML files for non-SPA app
-    html({
-      input: 'www/index.html',
-    }),
+    html(),
     // Resolve bare module specifiers to relative paths
     resolve(),
     // Minify JS
