@@ -20,9 +20,6 @@
     "clean": "node scripts/clean.js",
     "compile": "wireit",
     "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint",
     "start": "wireit",
     "build:ts": "wireit",
     "build:cem": "wireit",
@@ -79,7 +76,8 @@
         "src/**/*.css"
       ],
       "output": [
-        "build/src/**/*.css",
+        "src/**/*.compiled.css",
+        "src/**/*.compiled.css.map",
         "src/**/*.css.ts",
         "src/**/*.css.js"
       ]
@@ -100,9 +98,6 @@
         "src/**/*.ts",
         ".eslintignore",
         ".eslintrc.json"
-      ],
-      "output": [
-        "build/custom-elements.json"
       ]
     },
     "start": {
