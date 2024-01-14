@@ -5,6 +5,7 @@ const configuration = {
   fileExtensions: ['compiled.css', '.css.ts', '.css.js', '.css.map'],
   wireitFolder: true,
   buildFolder: true,
+  distFolder: true,
 };
 
 class BuildCleaner {
@@ -28,6 +29,7 @@ class BuildCleaner {
 
     await this.cleanWireit();
     await this.cleanBuild();
+    await this.cleanDist();
   }
 
   async getSourceFiles(directory) {
@@ -59,6 +61,13 @@ class BuildCleaner {
   async cleanBuild() {
     if (this.#configuration.buildFolder) {
       const buildPath = new URL('../build', import.meta.url).pathname;
+      await rm(buildPath, {recursive: true, force: true});
+    }
+  }
+
+  async cleanDist() {
+    if (this.#configuration.distFolder) {
+      const buildPath = new URL('../dist', import.meta.url).pathname;
       await rm(buildPath, {recursive: true, force: true});
     }
   }

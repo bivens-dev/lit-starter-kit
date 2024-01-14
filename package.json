@@ -23,20 +23,27 @@
     "start": "wireit",
     "build:ts": "wireit",
     "build:cem": "wireit",
-    "build:css": "wireit"
+    "build:css": "wireit",
+    "bundle": "wireit",
+    "preview": "wireit"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.0",
     "@open-wc/testing": "^4.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@types/mocha": "^10.0.6",
     "@types/node": "20.8.2",
     "@web/dev-server": "^0.4.1",
+    "@web/rollup-plugin-copy": "^0.5.1",
+    "@web/rollup-plugin-html": "^2.1.2",
     "@web/test-runner": "^0.18.0",
     "@web/test-runner-playwright": "^0.11.0",
     "eslint-plugin-lit": "^1.11.0",
     "eslint-plugin-wc": "^2.0.4",
     "gts": "^5.2.0",
     "lightningcss": "^1.22.1",
+    "rollup": "^4.9.5",
     "typescript": "~5.3.0",
     "wireit": "^0.14.3"
   },
@@ -117,6 +124,18 @@
       "dependencies": [
         "build:ts",
         "build:cem"
+      ]
+    },
+    "bundle": {
+      "command": "rollup -c",
+      "dependencies": [
+        "compile"
+      ]
+    },
+    "preview": {
+      "command": "web-dev-server --config web-dev-server-preview-config.js",
+      "dependencies": [
+        "bundle"
       ]
     }
   }
