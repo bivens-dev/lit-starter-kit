@@ -1,5 +1,5 @@
-import {readdir, readFile, writeFile} from 'node:fs/promises';
-import {transform} from 'lightningcss';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { transform } from 'lightningcss';
 // eslint-disable-next-line node/no-extraneous-import
 import * as prettier from 'prettier';
 
@@ -43,7 +43,7 @@ class StylesheetProcessor {
     const cssFiles = new Set();
 
     try {
-      const files = await readdir(directory, {recursive: true});
+      const files = await readdir(directory, { recursive: true });
       for (const file of files) {
         if (file.endsWith('.css')) {
           cssFiles.add(`${directory}/${file}`);
@@ -58,7 +58,7 @@ class StylesheetProcessor {
 
   async #processFile(fileName) {
     const fileContents = await readFile(fileName);
-    const {code, map} = transform({
+    const { code, map } = transform({
       filename: fileName,
       code: fileContents,
       minify: this.#configuration.minify,
@@ -85,7 +85,9 @@ class StylesheetProcessor {
         `${this.#configuration.outputPath}${this.#configuration.sourcePath}`
       )}.map`;
 
-      await writeFile(sourceMapFileName, resultsObject.sourceMap, {flag: 'w'});
+      await writeFile(sourceMapFileName, resultsObject.sourceMap, {
+        flag: 'w',
+      });
     }
 
     const stylesheetFileName = `${resultsObject.fileName.replace(
@@ -93,7 +95,7 @@ class StylesheetProcessor {
       `${this.#configuration.outputPath}${this.#configuration.sourcePath}`
     )}`;
 
-    await writeFile(stylesheetFileName, resultsObject.cssFile, {flag: 'w'});
+    await writeFile(stylesheetFileName, resultsObject.cssFile, { flag: 'w' });
   }
 
   async #writeLitFile(resultsObject) {
@@ -115,11 +117,11 @@ class StylesheetProcessor {
     if (this.#configuration.lit.typescript) {
       const typescriptFileName = resultsObject.fileName + '.ts';
 
-      await writeFile(typescriptFileName, formattedOutput, {flag: 'w'});
+      await writeFile(typescriptFileName, formattedOutput, { flag: 'w' });
     } else {
       const javascriptFileName = resultsObject.fileName + '.js';
 
-      await writeFile(javascriptFileName, formattedOutput, {flag: 'w'});
+      await writeFile(javascriptFileName, formattedOutput, { flag: 'w' });
     }
   }
 }
