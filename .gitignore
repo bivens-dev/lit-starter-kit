@@ -3,3 +3,5 @@ build/
 .wireit/
 src/**/*.css.ts
 src/**/*.css.js
+src/**/*.compiled.css
+src/**/*.css.map

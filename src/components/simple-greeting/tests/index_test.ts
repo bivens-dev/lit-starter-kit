@@ -1,4 +1,4 @@
-import {SimpleGreeting} from './index.js';
+import {SimpleGreeting} from '../simple-greeting.js';
 
 import {fixture, assert} from '@open-wc/testing';
 import {html} from 'lit/static-html.js';
