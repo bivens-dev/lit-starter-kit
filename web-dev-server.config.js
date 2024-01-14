@@ -1,7 +1,7 @@
 export default {
   open: true,
   watch: true,
-  appIndex: 'www/index.html',
+  rootDir: 'build',
   nodeResolve: {
     exportConditions: ['development'],
   },

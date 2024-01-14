@@ -21,6 +21,13 @@ const ssrResult = render(html`
       <script type="text/json" id="page-info">
         ${JSON.stringify(pageInfo)}
       </script>
+
+      <script type="module">
+        import './src/components/simple-greeting/simple-greeting.js';
+        import {styles} from './src/styles/global.css.js';
+        document.adoptedStyleSheets.push(styles);
+        console.log(styles);
+      </script>
     </body>
   </html>
 `);

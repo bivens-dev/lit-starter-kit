@@ -24,6 +24,7 @@
     "build:ts": "wireit",
     "build:cem": "wireit",
     "build:css": "wireit",
+    "build:html": "wireit",
     "bundle": "wireit",
     "preview": "wireit"
   },
@@ -49,6 +50,8 @@
   },
   "dependencies": {
     "@lit-labs/ssr": "^3.2.1",
+    "@lit-labs/ssr-client": "^1.1.6",
+    "@webcomponents/template-shadowroot": "^0.2.1",
     "lit": "^3.1.1",
     "tslib": "^2.6.2"
   },
@@ -90,6 +93,18 @@
         "src/**/*.css.js"
       ]
     },
+    "build:html": {
+      "command": "node scripts/static-page-builder.js",
+      "files": [
+        "src/pages/**/*.ts"
+      ],
+      "output": [
+        "build/**/*.html"
+      ],
+      "dependencies": [
+        "build:ts"
+      ]
+    },
     "test": {
       "command": "wtr",
       "files": [
@@ -116,7 +131,7 @@
       ],
       "dependencies": [
         {
-          "script": "build:ts",
+          "script": "compile",
           "cascade": false
         }
       ]
@@ -124,7 +139,8 @@
     "compile": {
       "dependencies": [
         "build:ts",
-        "build:cem"
+        "build:cem",
+        "build:html"
       ]
     },
     "bundle": {

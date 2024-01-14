@@ -2,7 +2,7 @@ import {readdir, writeFile} from 'node:fs/promises';
 
 const configuration = {
   sourcePath: '/build/src/pages',
-  outputPath: '/www',
+  outputPath: '/build',
 };
 
 class StaticPageBuilder {
