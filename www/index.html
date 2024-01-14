@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./styles/global.css">
-</head>
-<body>
-  <simple-greeting></simple-greeting>
-  <script type="module" src="../build/src/index.js"></script>
-</body>
-</html>
+
+  <!doctype html>
+  <html>
+    <head>
+      <title>MyApp Homepage</title>
+      <link rel="stylesheet" href="./styles/global.css" />
+    </head>
+    <body>
+      <main>Homepage</main>
+      <simple-greeting><template shadowroot="open" shadowrootmode="open"><style>
+  :host {
+    --primary-color: blue;
+  }
+
+  p {
+    color: var(--primary-color);
+  }
+</style><!--lit-part EvGichL14uw=--><p>Hello, <!--lit-part-->Somebody<!--/lit-part-->!</p><!--/lit-part--></template></simple-greeting>
+      <!-- Pass data to client. -->
+      <script type="text/json" id="page-info">
+        {&quot;title&quot;:&quot;Homepage&quot;,&quot;path&quot;:&quot;index.html&quot;}
+      </script>
+    </body>
+  </html>
