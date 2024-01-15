@@ -24,9 +24,6 @@ const ssrResult = render(html`
 
       <script type="module">
         import './src/components/simple-greeting/simple-greeting.js';
-        import {styles} from './src/styles/global.css.js';
-        document.adoptedStyleSheets.push(styles);
-        console.log(styles);
       </script>
     </body>
   </html>
