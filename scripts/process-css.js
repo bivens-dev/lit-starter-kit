@@ -1,4 +1,4 @@
-import {readdir, readFile, writeFile} from 'node:fs/promises';
+import {readdir, readFile, writeFile, mkdir} from 'node:fs/promises';
 import {transform} from 'lightningcss';
 // eslint-disable-next-line node/no-extraneous-import
 import * as prettier from 'prettier';
@@ -79,10 +79,22 @@ class StylesheetProcessor {
       return;
     }
 
+    const filePathParts = resultsObject.fileName.split('/');
+
+    // TODO: Temporary hack that relys on knowing the full path is x levels deep
+    const outputFolderPath = new URL(
+      `..${this.#configuration.outputPath}/${filePathParts
+        .slice(3, -1)
+        .join('/')}`,
+      import.meta.url
+    ).pathname;
+
+    await mkdir(outputFolderPath, {recursive: true});
+
     if (this.#configuration.native.sourceMaps) {
       const sourceMapFileName = `${resultsObject.fileName.replace(
-        '.css',
-        '.compiled.css'
+        this.#configuration.sourcePath,
+        `${this.#configuration.outputPath}${this.#configuration.sourcePath}`
       )}.map`;
 
       await writeFile(sourceMapFileName, resultsObject.sourceMap, {
@@ -91,8 +103,8 @@ class StylesheetProcessor {
     }
 
     const stylesheetFileName = `${resultsObject.fileName.replace(
-      '.css',
-      '.compiled.css'
+      this.#configuration.sourcePath,
+      `${this.#configuration.outputPath}${this.#configuration.sourcePath}`
     )}`;
 
     await writeFile(stylesheetFileName, resultsObject.cssFile, {flag: 'w'});

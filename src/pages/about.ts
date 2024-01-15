@@ -12,7 +12,7 @@ const ssrResult = render(html`
   <html>
     <head>
       <title>MyApp ${pageInfo.title}</title>
-      <link rel="stylesheet" href="./styles/global.css" />
+      <link rel="stylesheet" href="/src/styles/global.css" />
     </head>
     <body>
       <main>${pageInfo.title}</main>

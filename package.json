@@ -64,7 +64,10 @@
         "tsconfig.json"
       ],
       "output": [
-        "build/src/**",
+        "build/src/**/*.d.ts",
+        "build/src/**/*.d.ts.map",
+        "build/src/**/*.js",
+        "build/src/**/*.js.map",
         "build/tsconfig.tsbuildinfo"
       ],
       "dependencies": [
